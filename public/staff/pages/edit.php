@@ -1,10 +1,9 @@
-<?php
-
-require_once(__DIR__ . '/../../../private/initialize.php');
+<?php require_once(__DIR__ . '/../../../private/initialize.php'); 
 
 if (!isset($_GET['id'])) {
-    redirect_to(WWW_ROOT . '/staff/subjects/edit.php');
-}
+    redirect_to(WWW_ROOT . '/staff/pages/edit.php');
+} 
+
 $id = $_GET['id'];
 $menu_name = '';
 $position = '';
@@ -21,20 +20,21 @@ if(is_post_request()) {
     echo 'Visible: ' . $visible . '<br>';
 }
 ?>
-<?php $page_title = 'Edit Subject'; ?>
+
+<?php $page_title = 'Edit Page'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
 
-    <a class="back-link" href="<?php echo WWW_ROOT . '/staff/subjects/index.php'; ?>">&laquo; Back to List</a>
+    <a class="back-link" href="<?php echo WWW_ROOT . '/staff/pages/index.php'; ?>">&laquo; Back to List</a>
 
-    <div class="subject edit">
+    <div class="page edit">
         <h1>Edit Subject</h1>
 
-        <form action="<?php echo WWW_ROOT . '/staff/subjects/edit.php?id=' . h(u($id)); ?>" method="post">
+        <form action="<?php echo WWW_ROOT . '/staff/pages/edit.php?id=' . h(u($id)); ?>" method="post">
             <dl>
                 <dt>Menu Name</dt>
-                <dd><input type="text" name="menu_name" value="<?php echo $menu_name; ?>" /></dd>
+                <dd><input type="text" name="menu_name" value="<?php echo h($menu_name); ?>" /></dd>
             </dl>
             <dl>
                 <dt>Position</dt>
@@ -54,7 +54,7 @@ if(is_post_request()) {
                 </dd>
             </dl>
             <div id="operations">
-                <input type="submit" value="Edit Subject" />
+                <input type="submit" value="Edit Page" />
             </div>
         </form>
 

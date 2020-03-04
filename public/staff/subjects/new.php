@@ -1,4 +1,4 @@
-<?php require_once (__DIR__ . '/../../../private/initialize.php'); ?>
+<?php require_once(__DIR__ . '/../../../private/initialize.php'); ?>
 
 <?php
 
@@ -10,7 +10,8 @@ if ($test == '404') {
     error_500();
 }
 ?>
-<?php $page_title = 'Create Subject'; ?>
+
+<?php $page_title = 'Create Page'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
