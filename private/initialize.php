@@ -22,3 +22,6 @@ define("WWW_ROOT", $doc_root);
 
 
 require_once (__DIR__ . '/functions.php');
+require_once (__DIR__ . '/database.php');
+
+$db = db_connect();
