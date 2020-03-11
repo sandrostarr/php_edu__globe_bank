@@ -19,6 +19,7 @@ $pages_set = find_all_pages();
             <table class="list">
                 <tr>
                     <th>ID</th>
+                    <th>Subject ID</th>
                     <th>Position</th>
                     <th>Visible</th>
                     <th>Name</th>
@@ -30,6 +31,7 @@ $pages_set = find_all_pages();
                 <?php while($page = mysqli_fetch_assoc($pages_set)) { ?>
                     <tr>
                         <td><?php echo h($page['id']); ?></td>
+                        <td><?php echo h($page['subject_id']); ?></td>
                         <td><?php echo h($page['position']); ?></td>
                         <td><?php echo $page['visible'] == 1 ? 'true' : 'false'; ?></td>
                         <td><?php echo h($page['menu_name']); ?></td>
@@ -39,6 +41,10 @@ $pages_set = find_all_pages();
                     </tr>
                 <?php } ?>
             </table>
+
+        <?php
+            mysqli_free_result($pages_set);
+        ?>
 
         </div>
 
