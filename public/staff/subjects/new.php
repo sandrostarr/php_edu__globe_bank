@@ -1,14 +1,5 @@
-<?php require_once(__DIR__ . '/../../../private/initialize.php'); ?>
+<?php require_once(__DIR__ . '/../../../private/initialize.php');
 
-<?php
-
-$test = $_GET['test'] ?? '';
-
-if ($test == '404') {
-    error_404();
-} elseif ($test == '500') {
-    error_500();
-}
 ?>
 
 <?php $page_title = 'Create Page'; ?>

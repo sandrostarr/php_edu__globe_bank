@@ -21,6 +21,22 @@ function find_subject_by_id($id) {
     return $subject; //returns an assoc array
 }
 
+function insert_subject($menu_name, $position, $visible) {
+    global $db;
+
+    $sql = "INSERT INTO subjects (menu_name, position, visible) VALUES ( '" . $menu_name . "', '" . $position . "', '" . $visible . "')";
+    $result = mysqli_query($db, $sql);
+    if($result) {
+        return true;
+    }
+    else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+
+}
+
 function find_all_pages() {
     global $db;
 

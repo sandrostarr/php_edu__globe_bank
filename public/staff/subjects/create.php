@@ -6,10 +6,9 @@ $menu_name = $_POST['menu_name'] ?? '';
 $position = $_POST['position'] ?? '';
 $visible = $_POST['visible'] ?? '';
 
-echo 'Form Parameters: <br>';
-echo 'Menu name: ' . $menu_name . '<br>';
-echo 'Position: ' . $position . '<br>';
-echo 'Visible: ' . $visible . '<br>';
+$result = insert_subject($menu_name, $position, $visible);
+$new_id = mysqli_insert_id($db);
+redirect_to(WWW_ROOT . '/staff/subjects/show.php?id=' . $new_id);
 
 } else {
     redirect_to(WWW_ROOT . '/staff/subjects/new.php');
