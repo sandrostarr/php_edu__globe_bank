@@ -66,7 +66,8 @@ if(is_post_request()) {
                         if($subject["position"] == $i) {
                             echo " selected";
                         }
-                        echo ">{$i}</option>";
+                        $subject = find_subject_by_id($i);
+                        echo ">{$subject['menu_name']}</option>";
                     }
                     ?>
                 </select>

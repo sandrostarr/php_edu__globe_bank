@@ -4,6 +4,8 @@ $id = $_GET['id'] ?? '1';
 
 $page = find_page_by_id($id);
 
+$subject = find_subject_by_id($page['subject_id']);
+
 $page_title = 'Show Page';
 
 include(SHARED_PATH . '/staff_header.php');?>
@@ -24,8 +26,8 @@ include(SHARED_PATH . '/staff_header.php');?>
                 <dd><?php echo h($page['position']) ?></dd>
             </dl>
             <dl>
-                <dt>Subject ID</dt>
-                <dd><?php echo h($page['subject_id']) ?></dd>
+                <dt>Subject</dt>
+                <dd><?php echo h($subject['menu_name']) ?></dd>
             </dl>
             <dl>
                 <dt>Visible</dt>
