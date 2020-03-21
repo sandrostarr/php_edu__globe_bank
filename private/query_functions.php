@@ -21,10 +21,10 @@ function find_subject_by_id($id) {
     return $subject; //returns an assoc array
 }
 
-function insert_subject($menu_name, $position, $visible) {
+function insert_subject($subject) {
     global $db;
 
-    $sql = "INSERT INTO subjects (menu_name, position, visible) VALUES ( '" . $menu_name . "', '" . $position . "', '" . $visible . "')";
+    $sql = "INSERT INTO subjects (menu_name, position, visible) VALUES ( '" . $subject['menu_name'] . "', '" . $subject['position'] . "', '" . $subject['visible'] . "')";
     $result = mysqli_query($db, $sql);
     if($result) {
         return true;
@@ -35,6 +35,37 @@ function insert_subject($menu_name, $position, $visible) {
         exit;
     }
 
+}
+
+function update_subject($subject) {
+    global $db;
+
+    $sql = "UPDATE subjects SET menu_name = '" . $subject['menu_name'] . "', position = '" . $subject['position'] . "', visible = '" . $subject['visible'] . "' WHERE id = '" . $subject['id'] . "' LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+    if($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
+
+function delete_subject($id) {
+    global $db;
+
+    $sql = "DELETE FROM subjects WHERE id = '" . $id . "' LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+
+    if($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
 }
 
 function find_all_pages() {

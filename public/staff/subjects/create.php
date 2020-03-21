@@ -2,11 +2,13 @@
 require_once(__DIR__ . '/../../../private/initialize.php');
 
 if(is_post_request()) {
-$menu_name = $_POST['menu_name'] ?? '';
-$position = $_POST['position'] ?? '';
-$visible = $_POST['visible'] ?? '';
 
-$result = insert_subject($menu_name, $position, $visible);
+$subject = [];
+$subject['menu_name'] = $_POST['menu_name'] ?? '';
+$subject['position'] = $_POST['position'] ?? '';
+$subject['visible'] = $_POST['visible'] ?? '';
+
+$result = insert_subject($subject);
 $new_id = mysqli_insert_id($db);
 redirect_to(WWW_ROOT . '/staff/subjects/show.php?id=' . $new_id);
 
