@@ -24,5 +24,6 @@ define("WWW_ROOT", $doc_root);
 require_once (__DIR__ . '/functions.php');
 require_once (__DIR__ . '/database.php');
 require_once (__DIR__ . '/query_functions.php');
+require_once (__DIR__ . '/validation_functions.php');
 
 $db = db_connect();
