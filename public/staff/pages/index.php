@@ -2,6 +2,7 @@
 
 <?php
 $pages_set = find_all_pages();
+
 ?>
 
 <?php $page_title = 'Pages'; ?>
@@ -37,7 +38,7 @@ $pages_set = find_all_pages();
                         <td><?php echo h($page['menu_name']); ?></td>
                         <td><a class="action" href="<?php echo WWW_ROOT . '/staff/pages/show.php?id=' . h(u($page['id'])) ?>">View</a></td>
                         <td><a class="action" href="<?php echo WWW_ROOT . '/staff/pages/edit.php?id=' . h(u($page['id'])) ?>">Edit</a></td>
-                        <td><a class="action" href="">Delete</a></td>
+                        <td><a class="action" href="<?php echo WWW_ROOT . '/staff/pages/delete.php?id=' . h(u($page['id'])) ?>">Delete</a></td>
                     </tr>
                 <?php } ?>
             </table>

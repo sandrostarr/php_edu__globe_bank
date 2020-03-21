@@ -105,10 +105,10 @@ function insert_page($page) {
 
 }
 
-function update_page($subject) {
+function update_page($page) {
     global $db;
 
-    $sql = "UPDATE subjects SET menu_name = '" . $subject['menu_name'] . "', position = '" . $subject['position'] . "', visible = '" . $subject['visible'] . "' WHERE id = '" . $subject['id'] . "' LIMIT 1";
+    $sql = "UPDATE pages SET menu_name = '" . $page['menu_name'] . "', position = '" . $page['position'] . "', visible = '" . $page['visible'] . "', subject_id = '" . $page['subject_id'] . "' WHERE id = '" . $page['id'] . "' LIMIT 1";
 
     $result = mysqli_query($db, $sql);
     if($result) {
@@ -123,7 +123,7 @@ function update_page($subject) {
 function delete_page($id) {
     global $db;
 
-    $sql = "DELETE FROM subjects WHERE id = '" . $id . "' LIMIT 1";
+    $sql = "DELETE FROM pages WHERE id = '" . $id . "' LIMIT 1";
 
     $result = mysqli_query($db, $sql);
 
