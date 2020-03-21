@@ -1,18 +1,26 @@
-<?php require_once(__DIR__ . '/../../../private/initialize.php'); 
+<?php require_once(__DIR__ . '/../../../private/initialize.php');
 
-$menu_name = '';
-$position = '';
-$visible = '';
+$subject_set = find_all_subjects();
+$subject_count = mysqli_num_rows($subject_set);
+mysqli_free_result($subject_set);
+
+$page_set = find_all_pages();
+$page_count = mysqli_num_rows($page_set) + 1;
+mysqli_free_result($page_set);
+
+$page = [];
+$page['position'] = $page_count;
 
 if(is_post_request()) {
-$menu_name = $_POST['menu_name'] ?? '';
-$position = $_POST['position'] ?? '';
-$visible = $_POST['visible'] ?? '';
 
-echo 'Form Parameters: <br>';
-echo 'Menu name: ' . $menu_name . '<br>';
-echo 'Position: ' . $position . '<br>';
-echo 'Visible: ' . $visible . '<br>';
+    $page['menu_name'] = $_POST['menu_name'] ?? '';
+    $page['position'] = $_POST['position'] ?? '';
+    $page['subject_id'] = $_POST['subject_id'] ?? '';
+    $page['visible'] = $_POST['visible'] ?? '';
+
+    $result = insert_page($page);
+    $new_id = mysqli_insert_id($db);
+    redirect_to(WWW_ROOT . '/staff/pages/show.php?id=' . $new_id);
 
 } 
 ?>
@@ -36,12 +44,34 @@ echo 'Visible: ' . $visible . '<br>';
         <dt>Position</dt>
         <dd>
             <select name="position">
-                <option value="1" <?php if($position == 1) echo 'selected'; ?> >1</option>
-                <option value="2" <?php if($position == 2) echo 'selected'; ?> >2</option>
-                <option value="3" <?php if($position == 3) echo 'selected'; ?> >3</option>
+                <?php
+                for($i=1; $i <= $page_count; $i++) {
+                    echo "<option value=\"{$i}\"";
+                    if($page["position"] == $i) {
+                        echo " selected";
+                    }
+                    echo ">{$i}</option>";
+                }
+                ?>
             </select>
         </dd>
       </dl>
+        <dl>
+            <dt>Subject ID</dt>
+            <dd>
+                <select name="subject_id">
+                    <?php
+                    for($i=1; $i <= $subject_count; $i++) {
+                        echo "<option value=\"{$i}\"";
+                        if($subject["position"] == $i) {
+                            echo " selected";
+                        }
+                        echo ">{$i}</option>";
+                    }
+                    ?>
+                </select>
+            </dd>
+        </dl>
       <dl>
         <dt>Visible</dt>
         <dd>

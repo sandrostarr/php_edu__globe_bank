@@ -24,6 +24,10 @@ include(SHARED_PATH . '/staff_header.php');?>
                 <dd><?php echo h($page['position']) ?></dd>
             </dl>
             <dl>
+                <dt>Subject ID</dt>
+                <dd><?php echo h($page['subject_id']) ?></dd>
+            </dl>
+            <dl>
                 <dt>Visible</dt>
                 <dd><?php echo $page['visible'] == '1' ? 'true' : 'false'; ?></dd>
             </dl>

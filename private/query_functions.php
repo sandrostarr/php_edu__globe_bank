@@ -89,10 +89,10 @@ function find_page_by_id($id) {
     return $page; //returns an assoc array
 }
 
-function insert_page($subject) {
+function insert_page($page) {
     global $db;
 
-    $sql = "INSERT INTO subjects (menu_name, position, visible) VALUES ( '" . $subject['menu_name'] . "', '" . $subject['position'] . "', '" . $subject['visible'] . "')";
+    $sql = "INSERT INTO pages (menu_name, position, visible, subject_id) VALUES ( '" . $page['menu_name'] . "', '" . $page['position'] . "', '" . $page['visible'] . "', '" . $page['subject_id'] . "')";
     $result = mysqli_query($db, $sql);
     if($result) {
         return true;
