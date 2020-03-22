@@ -19,9 +19,12 @@ if(is_post_request()) {
     $page['visible'] = $_POST['visible'] ?? '';
 
     $result = insert_page($page);
-    $new_id = mysqli_insert_id($db);
-    redirect_to(WWW_ROOT . '/staff/pages/show.php?id=' . $new_id);
-
+    if($result === true) {
+        $new_id = mysqli_insert_id($db);
+        redirect_to(WWW_ROOT . '/staff/pages/show.php?id=' . $new_id);
+    } else {
+        $errors = $result;
+    }
 } 
 ?>
 
@@ -35,10 +38,12 @@ if(is_post_request()) {
   <div class="page new">
     <h1>Create Page</h1>
 
+      <?php echo display_errors($errors); ?>
+
     <form action="<?php echo WWW_ROOT . '/staff/pages/new.php'; ?>" method="post">
       <dl>
         <dt>Menu Name</dt>
-        <dd><input type="text" name="menu_name" value="<?php echo h($menu_name) ?>" /></dd>
+        <dd><input type="text" name="menu_name" value="<?php echo h($page['menu_name']) ?>" /></dd>
       </dl>
       <dl>
         <dt>Position</dt>
@@ -63,7 +68,7 @@ if(is_post_request()) {
                     <?php
                     for($i=1; $i <= $subject_count; $i++) {
                         echo "<option value=\"{$i}\"";
-                        if($subject["position"] == $i) {
+                        if($page["subject_id"] == $i) {
                             echo " selected";
                         }
                         $subject = find_subject_by_id($i);
@@ -77,7 +82,7 @@ if(is_post_request()) {
         <dt>Visible</dt>
         <dd>
           <input type="hidden" name="visible" value="0" />
-          <input type="checkbox" name="visible" value="1" <?php if($visible == 1) echo 'checked'; ?> />
+          <input type="checkbox" name="visible" value="1" <?php if($page['visible'] == 1) echo 'checked'; ?> />
         </dd>
       </dl>
       <div id="operations">

@@ -101,6 +101,11 @@ function find_page_by_id($id) {
 function insert_page($page) {
     global $db;
 
+    $errors = validate_page($page);
+    if(!empty($errors)) {
+        return $errors;
+    }
+
     $sql = "INSERT INTO pages (menu_name, position, visible, subject_id) VALUES ( '" . $page['menu_name'] . "', '" . $page['position'] . "', '" . $page['visible'] . "', '" . $page['subject_id'] . "')";
     $result = mysqli_query($db, $sql);
     if($result) {
@@ -116,6 +121,11 @@ function insert_page($page) {
 
 function update_page($page) {
     global $db;
+
+    $errors = validate_page($page);
+    if(!empty($errors)) {
+        return $errors;
+    }
 
     $sql = "UPDATE pages SET menu_name = '" . $page['menu_name'] . "', position = '" . $page['position'] . "', visible = '" . $page['visible'] . "', subject_id = '" . $page['subject_id'] . "' WHERE id = '" . $page['id'] . "' LIMIT 1";
 
@@ -174,4 +184,65 @@ function validate_subject($subject) {
     }
 
     return $errors;
+}
+
+function validate_page($page) {
+
+    $errors = [];
+
+    // subject_id
+    if(is_blank($page['subject_id'])) {
+        $errors[] = "Subject cannot be blank.";
+    }
+
+    // menu_name
+    if(is_blank($page['menu_name'])) {
+        $errors[] = "Name cannot be blank.";
+    } elseif(!has_length($page['menu_name'], ['min' => 2, 'max' => 255])) {
+        $errors[] = "Name must be between 2 and 255 characters.";
+    }
+
+    // menu_name unique
+    $unique = has_unique_page_menu_name($page);
+    if($unique['total'] != 0) {
+        $errors[] = "Name must be unique.";
+
+    }
+    // position
+    // Make sure we are working with an integer
+    $position_int = (int) $page['position'];
+    if($position_int <= 0) {
+        $errors[] = "Position must be greater than zero.";
+    }
+    if($position_int > 999) {
+        $errors[] = "Position must be less than 999.";
+    }
+
+    // subject_id
+    // Make sure we are working with an integer
+    $subject_id_int = (int) $page['subject_id'];
+    if($subject_id_int <= 0) {
+        $errors[] = "Position must be greater than zero.";
+    }
+
+    // visible
+    // Make sure we are working with a string
+    $visible_str = (string) $page['visible'];
+    if(!has_inclusion_of($visible_str, ["0","1"])) {
+        $errors[] = "Visible must be true or false.";
+    }
+
+    return $errors;
+}
+
+function has_unique_page_menu_name($page) {
+    global $db;
+
+    $sql = "SELECT COUNT(menu_name) total FROM pages WHERE menu_name = '" . $page['menu_name'] . "'";
+    $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
+    $unique = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+
+    return $unique;
 }

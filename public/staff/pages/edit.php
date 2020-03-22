@@ -6,6 +6,16 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
+$page = find_page_by_id($id);
+
+$subject_set = find_all_subjects();
+$subject_count = mysqli_num_rows($subject_set);
+mysqli_free_result($subject_set);
+
+$page_set = find_all_pages();
+$page_count = mysqli_num_rows($page_set);
+mysqli_free_result($page_set);
+
 if(is_post_request()) {
 
     $page = [];
@@ -15,21 +25,14 @@ if(is_post_request()) {
     $page['subject_id'] = $_POST['subject_id'] ?? '';
     $page['visible'] = $_POST['visible'] ?? '';
 
-
     $result = update_page($page);
-    redirect_to(WWW_ROOT . '/staff/pages/show.php?id=' . $id);
+    if($result === true) {
+        redirect_to(    WWW_ROOT . '/staff/pages/show.php?id=' . $id);
+    } else {
+        $errors = $result;
+    }
 } else {
 
-    $page = find_page_by_id($id);
-
-
-    $subject_set = find_all_subjects();
-    $subject_count = mysqli_num_rows($subject_set);
-    mysqli_free_result($subject_set);
-
-    $page_set = find_all_pages();
-    $page_count = mysqli_num_rows($page_set);
-    mysqli_free_result($page_set);
 
 }
 ?>
@@ -43,6 +46,8 @@ if(is_post_request()) {
 
     <div class="page edit">
         <h1>Edit Subject</h1>
+
+        <?php echo display_errors($errors); ?>
 
         <form action="<?php echo WWW_ROOT . '/staff/pages/edit.php?id=' . h(u($id)); ?>" method="post">
             <dl>
@@ -72,7 +77,7 @@ if(is_post_request()) {
                         <?php
                         for($i=1; $i <= $subject_count; $i++) {
                             echo "<option value=\"{$i}\"";
-                            if($subject["position"] == $i) {
+                            if($page["subject_id"] == $i) {
                                 echo " selected";
                             }
                             $subject = find_subject_by_id($i);

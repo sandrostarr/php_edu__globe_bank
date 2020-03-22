@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93282c50-b464-4bf6-8518-17d8ce840f3f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/private/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private/initialize.php" beforeDir="false" afterPath="$PROJECT_DIR$/private/initialize.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/private/query_functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/private/query_functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/staff/subjects/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/staff/subjects/create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/staff/subjects/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/staff/subjects/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/staff/subjects/new.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/staff/subjects/new.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/staff/pages/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/staff/pages/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/staff/pages/new.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/staff/pages/new.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/staff/subjects/create.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,12 +21,37 @@
       <executable />
     </execution>
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="globe_bank@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="globe_bank@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Y9XgAF2JoajSOsS1BLqUT3D1vw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/private" />
@@ -49,6 +74,26 @@
       </list>
     </option>
   </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7307e003" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@7307e003" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@ac38e5" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+          </expand>
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -62,7 +107,7 @@
       <workItem from="1582355893404" duration="23587000" />
       <workItem from="1583249606821" duration="680000" />
       <workItem from="1583848477257" duration="493000" />
-      <workItem from="1584703455045" duration="20361000" />
+      <workItem from="1584703455045" duration="24714000" />
     </task>
     <servers />
   </component>
