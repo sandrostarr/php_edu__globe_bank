@@ -27,3 +27,4 @@ require_once (__DIR__ . '/query_functions.php');
 require_once (__DIR__ . '/validation_functions.php');
 
 $db = db_connect();
+$errors = [];

@@ -9,8 +9,12 @@ $subject['position'] = $_POST['position'] ?? '';
 $subject['visible'] = $_POST['visible'] ?? '';
 
 $result = insert_subject($subject);
-$new_id = mysqli_insert_id($db);
-redirect_to(WWW_ROOT . '/staff/subjects/show.php?id=' . $new_id);
+if($result === true) {
+    $new_id = mysqli_insert_id($db);
+    redirect_to(WWW_ROOT . '/staff/subjects/show.php?id=' . $new_id);
+} else {
+    $errors = $result;
+}
 
 } else {
     redirect_to(WWW_ROOT . '/staff/subjects/new.php');
