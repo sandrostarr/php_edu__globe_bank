@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="93282c50-b464-4bf6-8518-17d8ce840f3f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/private/database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/private/query_functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/private/query_functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/private/validation_functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/private/validation_functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/staff/pages/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/staff/pages/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/staff/pages/new.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/staff/pages/new.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/staff/pages/show.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/staff/pages/show.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +53,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/private" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -104,7 +106,7 @@
       <workItem from="1582355893404" duration="23587000" />
       <workItem from="1583249606821" duration="680000" />
       <workItem from="1583848477257" duration="493000" />
-      <workItem from="1584703455045" duration="26764000" />
+      <workItem from="1584703455045" duration="28988000" />
     </task>
     <servers />
   </component>

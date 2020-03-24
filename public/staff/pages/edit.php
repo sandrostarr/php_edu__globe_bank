@@ -24,6 +24,7 @@ if(is_post_request()) {
     $page['position'] = $_POST['position'] ?? '';
     $page['subject_id'] = $_POST['subject_id'] ?? '';
     $page['visible'] = $_POST['visible'] ?? '';
+    $page['content'] = $_POST['content'] ?? '';
 
     $result = update_page($page);
     if($result === true) {
@@ -92,6 +93,12 @@ if(is_post_request()) {
                 <dd>
                     <input type="hidden" name="visible" value="0" />
                     <input type="checkbox" name="visible" value="1" <?php if($page['visible'] == 1) echo 'checked'; ?> />
+                </dd>
+            </dl>
+            <dl>
+                <dt>Content</dt>
+                <dd>
+                    <textarea rows="10" cols="45" name="content"><?php echo h($page['content']); ?></textarea>
                 </dd>
             </dl>
             <div id="operations">

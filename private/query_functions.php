@@ -14,7 +14,7 @@ function find_subject_by_id($id) {
     global $db;
 
     $sql = "SELECT * FROM subjects WHERE id='" . db_escape($id) . "'";
-    echo $sql;
+    //echo $sql;
     $result = mysqli_query($db, $sql); 
     confirm_result_set($result);
     $subject = mysqli_fetch_assoc($result);
@@ -194,6 +194,11 @@ function validate_page($page) {
     // subject_id
     if(is_blank($page['subject_id'])) {
         $errors[] = "Subject cannot be blank.";
+    }
+
+    // content
+    if(is_blank($page['content'])) {
+        $errors[] = "Content cannot be blank.";
     }
 
     // menu_name

@@ -78,13 +78,18 @@ if(is_post_request()) {
                 </select>
             </dd>
         </dl>
-      <dl>
+        <dl>
         <dt>Visible</dt>
         <dd>
           <input type="hidden" name="visible" value="0" />
           <input type="checkbox" name="visible" value="1" <?php if($page['visible'] == 1) echo 'checked'; ?> />
         </dd>
-      </dl>
+        </dl>
+        <dl>
+            <dt>Content</dt>
+            <textarea rows="10" cols="45" name="content"><?php echo h($page['content']); ?></textarea>
+            </dd>
+        </dl>
       <div id="operations">
         <input type="submit" value="Create Page" />
       </div>
