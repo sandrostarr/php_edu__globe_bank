@@ -13,7 +13,8 @@ function find_all_subjects() {
 function find_subject_by_id($id) {
     global $db;
 
-    $sql = "SELECT * FROM subjects WHERE id='" . $id . "'";
+    $sql = "SELECT * FROM subjects WHERE id='" . db_escape($id) . "'";
+    echo $sql;
     $result = mysqli_query($db, $sql); 
     confirm_result_set($result);
     $subject = mysqli_fetch_assoc($result);
@@ -28,7 +29,7 @@ function insert_subject($subject) {
         return $errors;
     }
 
-    $sql = "INSERT INTO subjects (menu_name, position, visible) VALUES ( '" . $subject['menu_name'] . "', '" . $subject['position'] . "', '" . $subject['visible'] . "')";
+    $sql = "INSERT INTO subjects (menu_name, position, visible) VALUES ( '" . db_escape($subject['menu_name']) . "', '" . db_escape($subject['position']) . "', '" . db_escape($subject['visible']) . "')";
     $result = mysqli_query($db, $sql);
     if($result) {
         return true;
@@ -49,7 +50,7 @@ function update_subject($subject) {
         return $errors;
     }
 
-    $sql = "UPDATE subjects SET menu_name = '" . $subject['menu_name'] . "', position = '" . $subject['position'] . "', visible = '" . $subject['visible'] . "' WHERE id = '" . $subject['id'] . "' LIMIT 1";
+    $sql = "UPDATE subjects SET menu_name = '" . db_escape($subject['menu_name']) . "', position = '" . db_escape($subject['position']) . "', visible = '" . db_escape($subject['visible']) . "' WHERE id = '" . db_escape($subject['id']) . "' LIMIT 1";
 
     $result = mysqli_query($db, $sql);
     if($result) {
@@ -64,7 +65,7 @@ function update_subject($subject) {
 function delete_subject($id) {
     global $db;
 
-    $sql = "DELETE FROM subjects WHERE id = '" . $id . "' LIMIT 1";
+    $sql = "DELETE FROM subjects WHERE id = '" . db_escape($id) . "' LIMIT 1";
 
     $result = mysqli_query($db, $sql);
 
@@ -90,7 +91,7 @@ function find_all_pages() {
 function find_page_by_id($id) {
     global $db;
 
-    $sql = "SELECT * FROM pages WHERE id='" . $id . "'";
+    $sql = "SELECT * FROM pages WHERE id='" . db_escape($id) . "'";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     $page = mysqli_fetch_assoc($result);
@@ -106,7 +107,7 @@ function insert_page($page) {
         return $errors;
     }
 
-    $sql = "INSERT INTO pages (menu_name, position, visible, subject_id) VALUES ( '" . $page['menu_name'] . "', '" . $page['position'] . "', '" . $page['visible'] . "', '" . $page['subject_id'] . "')";
+    $sql = "INSERT INTO pages (menu_name, position, visible, subject_id) VALUES ( '" . db_escape($page['menu_name']) . "', '" . db_escape($page['position']) . "', '" . db_escape($page['visible']) . "', '" . db_escape($page['subject_id']) . "')";
     $result = mysqli_query($db, $sql);
     if($result) {
         return true;
@@ -127,7 +128,7 @@ function update_page($page) {
         return $errors;
     }
 
-    $sql = "UPDATE pages SET menu_name = '" . $page['menu_name'] . "', position = '" . $page['position'] . "', visible = '" . $page['visible'] . "', subject_id = '" . $page['subject_id'] . "' WHERE id = '" . $page['id'] . "' LIMIT 1";
+    $sql = "UPDATE pages SET menu_name = '" . db_escape($page['menu_name']) . "', position = '" . db_escape($page['position']) . "', visible = '" . db_escape($page['visible']) . "', subject_id = '" . db_escape($page['subject_id']) . "' WHERE id = '" . db_escape($page['id']) . "' LIMIT 1";
 
     $result = mysqli_query($db, $sql);
     if($result) {
@@ -142,7 +143,7 @@ function update_page($page) {
 function delete_page($id) {
     global $db;
 
-    $sql = "DELETE FROM pages WHERE id = '" . $id . "' LIMIT 1";
+    $sql = "DELETE FROM pages WHERE id = '" . db_escape($id) . "' LIMIT 1";
 
     $result = mysqli_query($db, $sql);
 
@@ -233,16 +234,4 @@ function validate_page($page) {
     }
 
     return $errors;
-}
-
-function has_unique_page_menu_name($page) {
-    global $db;
-
-    $sql = "SELECT COUNT(menu_name) total FROM pages WHERE menu_name = '" . $page['menu_name'] . "'";
-    $result = mysqli_query($db, $sql);
-    confirm_result_set($result);
-    $unique = mysqli_fetch_assoc($result);
-    mysqli_free_result($result);
-
-    return $unique;
 }

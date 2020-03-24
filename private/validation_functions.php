@@ -93,4 +93,15 @@
     return preg_match($email_regex, $value) === 1;
   }
 
-?>
+
+function has_unique_page_menu_name($page) {
+  global $db;
+
+  $sql = "SELECT COUNT(menu_name) total FROM pages WHERE menu_name = '" . db_escape($page['menu_name']) . "'";
+  $result = mysqli_query($db, $sql);
+  confirm_result_set($result);
+  $unique = mysqli_fetch_assoc($result);
+  mysqli_free_result($result);
+
+  return $unique;
+}
